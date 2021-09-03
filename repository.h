@@ -28,11 +28,14 @@ struct StagingAreaEntry {
 };
 
 class Repository {
-    // current working branch
-    std::string head;
     std::unordered_map<std::string, StagingAreaEntry> stagingArea;
+    
+    void readFromIndex();
+    void writeToIndex();
+    std::string hashFile(const std::string &filename);
 public:
     void init();
+    void add(const std::string &filename);
 };
 
 #endif
